@@ -1,0 +1,57 @@
+<tryton>
+    <data>
+        <!-- Vista de Formulario -->
+        <record model="ir.ui.view" id="daily_reconciliation_view_form">
+            <field name="model">inventario_basilos.daily_reconciliation</field>
+            <field name="type">form</field>
+            <field name="name">daily_reconciliation_form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group col="2">
+                        <field name="fecha"/>
+                        <field name="ubicacion"/>
+                        <field name="producto"/>
+                        <field name="conteo_fisico"/>
+                        <field name="conteo_sistema" readonly="1"/>
+                        <field name="diferencia" readonly="1"/>
+                    </group>
+                    <!-- Botón para actualizar stock (Tryton 7.0) -->
+                    <footer>
+                        <button name="update_stock" string="Actualizar Stock" type="object"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista de Lista -->
+        <record model="ir.ui.view" id="daily_reconciliation_view_tree">
+            <field name="model">inventario_basilos.daily_reconciliation</field>
+            <field name="type">tree</field>
+            <field name="name">daily_reconciliation_tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="fecha"/>
+                    <field name="producto"/>
+                    <field name="conteo_fisico"/>
+                    <field name="conteo_sistema"/>
+                    <field name="diferencia"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Acción y Menú -->
+        <record model="ir.action.act_window" id="act_daily_reconciliation">
+            <field name="name">Conciliaciones Diarias</field>
+            <field name="res_model">inventario_basilos.daily_reconciliation</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menú padre CORRECTO para Tryton 7.0 -->
+        <menuitem 
+            parent="stock.menu_stock"
+            id="menu_daily_reconciliation"
+            name="Conciliación Diaria"
+            action="act_daily_reconciliation"
+            sequence="10"/>
+    </data>
+</tryton>

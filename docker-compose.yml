@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: tryton
+      POSTGRES_USER: tryton
+      POSTGRES_PASSWORD: tryton
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  tryton:
+    image: tryton/tryton:7.0
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    environment:
+      - TRYTOND_DATABASE_URI=postgresql://tryton:tryton@db/tryton
+      - TRYTOND_ADMIN_PASSWORD=admin
+    volumes:
+      - ./modules:/modules
+      - ./trytond.conf:/etc/trytond.conf
+    command: trytond -c /etc/trytond.conf
+
+volumes:
+  pgdata:

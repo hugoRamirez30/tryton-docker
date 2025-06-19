@@ -1,0 +1,19 @@
+# Notas técnicas del entorno Tryton + Docker
+
+Versión Tryton: 7.0
+Versión PostgreSQL: 13.x
+Base de datos: tryton
+
+Módulos personalizados:
+- inventario_basilios
+- proveedores_basilios
+
+Ruta de módulos en docker-compose:
+- ./custom-modules:/modules
+
+Observaciones:
+- El servidor inicia correctamente.
+- Los módulos están en la ruta y en la BD, pero no aparecen en el cliente.
+- Probado desde docker shell con `docker exec -it tryton bash`
+- Archivos __tryton__.py están correctamente definidos.
+- Intentos fallidos de forzar carga vía `--update-modules`.

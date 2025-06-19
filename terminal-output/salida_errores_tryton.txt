@@ -1,0 +1,12 @@
+# Errores generados al iniciar Tryton
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/trytond/modules/__init__.py", line 85, in load_module
+    __import__(module)
+ModuleNotFoundError: No module named 'inventario_basilios'
+
+→ Esto ocurre incluso cuando el módulo está en la ruta /modules/ y mapeado en el volumen Docker.
+
+Revisado:
+- Permisos OK
+- Estructura de __init__.py OK

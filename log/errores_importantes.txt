@@ -1,0 +1,20 @@
+# Errores relevantes detectados durante el desarrollo con Tryton 7.0
+
+## ❌ Error 1: trytond.conf no reconoce los módulos personalizados
+Mensaje:
+ModuleNotFoundError: No module named 'inventario_basilios'
+
+Observación:
+- El módulo está en la ruta, pero parece que no se está importando correctamente.
+- Se revisó la sección [trytond] addons_path en trytond.conf.
+
+---
+
+## ❌ Error 2: Error de importación al iniciar el servidor
+Mensaje:
+Could not find module 'proveedores_basilios'
+
+Observación:
+- El módulo aparece en la BD (ir_module_module), pero no se muestra en el cliente.
+
+---

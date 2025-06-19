@@ -1,0 +1,12 @@
+# Inspección de base de datos PostgreSQL
+
+-- Conexión exitosa a la base de datos tryton
+-- Resultado de: SELECT name, state FROM ir_module_module;
+
+| name                  | state     |
+|-----------------------|-----------|
+| inventario_basilios   | activated |
+| proveedores_basilios  | activated |
+| sale                  | activated |
+
+-- Confirmado: los módulos están registrados correctamente.

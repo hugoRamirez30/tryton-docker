@@ -1,0 +1,8 @@
+# Salida del servidor Tryton (docker-compose logs o terminal directa)
+
+[INFO] Starting Tryton server...
+[INFO] Configuration loaded from trytond.conf
+[INFO] Listening on 0.0.0.0:8000
+[INFO] Modules loaded: sale, purchase, inventario_basilios, proveedores_basilios
+
+→ No se muestran en la interfaz del cliente, a pesar de estar cargados y activados.
