@@ -1,0 +1,49 @@
+<tryton>
+  <data>
+    <record model="ir.ui.view" id="daily_reconciliation_view_form">
+      <field name="model">inventario_basilos.daily_reconciliation</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form>
+          <group col="2">
+            <field name="fecha"/>
+            <field name="ubicacion"/>
+            <field name="producto"/>
+            <field name="conteo_fisico"/>
+            <field name="conteo_sistema" readonly="1"/>
+            <field name="diferencia" readonly="1"/>
+          </group>
+          <footer>
+            <button name="update_stock" string="Actualizar Stock" type="object"/>
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="daily_reconciliation_view_tree">
+      <field name="model">inventario_basilos.daily_reconciliation</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="fecha"/>
+          <field name="producto"/>
+          <field name="conteo_fisico"/>
+          <field name="conteo_sistema"/>
+          <field name="diferencia"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.action.act_window" id="act_daily_reconciliation">
+      <field name="name">Conciliaciones Diarias</field>
+      <field name="res_model">inventario_basilos.daily_reconciliation</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_daily_reconciliation"
+              parent="stock.menu_stock"
+              name="Conciliación Diaria"
+              action="act_daily_reconciliation"
+              sequence="10"/>
+  </data>
+</tryton>
