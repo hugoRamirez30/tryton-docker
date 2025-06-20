@@ -1,7 +1,5 @@
-version: "3.8"
-
 services:
-  db:
+  postgres:
     image: postgres:15
     environment:
       POSTGRES_DB: tryton
@@ -10,19 +8,60 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
-  tryton:
+  tryton-init:
     image: tryton/tryton:7.0
     depends_on:
-      - db
+      - postgres
+    environment:
+      DB_USER: tryton
+      DB_PASSWORD: tryton
+      DB_HOSTNAME: postgres
+      DB_PORT: 5432
+      DB_NAME: tryton
+    volumes:
+      - ./trytond.conf:/etc/trytond.conf:ro
+      - ./custom-modules:/usr/local/lib/python3.11/dist-packages/trytond/modules/custom
+    command: trytond-admin -d tryton --all -c /etc/trytond.conf
+    restart: "no"
+
+  tryton-server:
+    image: tryton/tryton:7.0
+    depends_on:
+      - postgres
+      - tryton-init
+    environment:
+      DB_USER: tryton
+      DB_PASSWORD: tryton
+      DB_HOSTNAME: postgres
+      DB_PORT: 5432
+      DB_NAME: tryton
     ports:
       - "8000:8000"
-    environment:
-      - TRYTOND_DATABASE_URI=postgresql://tryton:tryton@db/tryton
-      - TRYTOND_ADMIN_PASSWORD=admin
     volumes:
-      - ./modules:/modules
-      - ./trytond.conf:/etc/trytond.conf
-    command: trytond -c /etc/trytond.conf
+      - tryton-data:/var/lib/trytond/db
+      - ./trytond.conf:/etc/trytond.conf:ro
+      - ./custom-modules:/usr/local/lib/python3.11/dist-packages/trytond/modules/custom
+    restart: unless-stopped
+    command: /entrypoint.sh trytond -c /etc/trytond.conf
+
+  tryton-cron:
+    image: tryton/tryton:7.0
+    depends_on:
+      - tryton-server
+    environment:
+      DB_USER: tryton
+      DB_PASSWORD: tryton
+      DB_HOSTNAME: postgres
+      DB_PORT: 5432
+      DB_NAME: tryton
+    volumes:
+      - tryton-data:/var/lib/trytond/db
+      - ./custom-modules:/usr/local/lib/python3.11/dist-packages/trytond/modules/custom
+      - ./trytond.conf:/etc/trytond.conf:ro
+    command: trytond-cron -d tryton -c /etc/trytond.conf
+    restart: unless-stopped
 
 volumes:
   pgdata:
+  tryton-data:
+

@@ -15,7 +15,7 @@ class InventoryLine(metaclass=PoolMeta):
     cantidad_merma = fields.Float("Cantidad Mermada")
 
 # Modelo para Conciliación Diaria
-class DailyReconciliation(Model, ModelView):
+class DailyReconciliation(ModelView, Model):
     __name__ = 'inventario_basilos.daily_reconciliation'
     
     fecha = fields.Date("Fecha", required=True)

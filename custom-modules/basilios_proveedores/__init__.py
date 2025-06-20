@@ -1,9 +1,10 @@
 from trytond.pool import Pool
-from . import proveedores
+
+from .model import Party, PartyProductTemplate
 
 def register():
     Pool.register(
-        proveedores.Party,
-        proveedores.PartyProductTemplate,
+        Party,
+        PartyProductTemplate,
         module='basilios_proveedores', type_='model'
     )

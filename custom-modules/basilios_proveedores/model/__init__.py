@@ -1,1 +1,2 @@
-from . import proveedores
+from .proveedores import Party, PartyProductTemplate
+

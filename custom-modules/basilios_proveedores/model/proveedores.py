@@ -1,5 +1,5 @@
 from trytond.model import Model, fields
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import PoolMeta
 
 class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
@@ -12,7 +12,7 @@ class Party(metaclass=PoolMeta):
         ('otros', 'Otros'),
     ], 'Categoría Proveedor')
     
-    productos_sumistrados = fields.Many2Many(
+    productos_suministrados = fields.Many2Many(
         'party-party.product-template', 
         'party', 
         'product', 
