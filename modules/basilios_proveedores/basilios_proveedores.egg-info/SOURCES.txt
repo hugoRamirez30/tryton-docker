@@ -1,0 +1,8 @@
+setup.py
+basilios_proveedores.egg-info/PKG-INFO
+basilios_proveedores.egg-info/SOURCES.txt
+basilios_proveedores.egg-info/dependency_links.txt
+basilios_proveedores.egg-info/entry_points.txt
+basilios_proveedores.egg-info/top_level.txt
+model/__init__.py
+model/proveedores.py
