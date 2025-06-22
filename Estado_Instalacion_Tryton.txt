@@ -1,9 +1,0 @@
-Cambios realizados y estado actual de la instalaci¢n Tryton con Docker 
- 
-- Se ha realizado la instalaci¢n de Tryton usando Docker, siguiendo el archivo docker-compose.yml y el Dockerfile presentes en este directorio. 
-- El Dockerfile incluye comandos para instalar las dependencias Python necesarias usando pip install, asegurando que todos los m¢dulos y librer¡as requeridos est‚n disponibles en el contenedor. 
-- La configuraci¢n principal est  en el archivo trytond.conf. 
-- La carpeta modules contiene los m¢dulos personalizados o adicionales para Tryton. 
-- La instalaci¢n y configuraci¢n se han completado sin errores visibles. 
-- Actualmente, durante la instalaci¢n y ejecuci¢n, las salidas y logs que se muestran en la terminal no se reflejan en la interfaz web de Tryton. Esto es un comportamiento conocido y no afecta la funcionalidad b sica del sistema. 
-- Para verificar el estado o resolver problemas, es recomendable revisar los logs directamente en la terminal o dentro del contenedor. 
