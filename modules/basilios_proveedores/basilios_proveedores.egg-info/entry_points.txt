@@ -1,2 +1,0 @@
-[trytond.modules]
-basilios_proveedores = basilios_proveedores

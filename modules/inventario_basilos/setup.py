@@ -1,4 +1,3 @@
-# modules/inventario_basilos/setup.py
 from setuptools import setup, find_packages
 
 setup(
@@ -6,9 +5,12 @@ setup(
     version='1.0.0',
     description='Gestión de inventario y mermas',
     author='Hugo-Ramirez',
-    packages=find_packages(),
+    packages=find_packages(),  # detecta automáticamente las carpetas con código
     include_package_data=True,
-    install_requires=[],
+    package_data={
+        'inventario_basilos': ['tryton.cfg', 'ir.model.access.csv', 'view/*.xml'],
+    },
+    zip_safe=False,
     entry_points={
         'trytond.modules': [
             'inventario_basilos = inventario_basilos'

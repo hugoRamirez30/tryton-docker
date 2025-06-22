@@ -7,6 +7,6 @@ inventario_basilos.egg-info/SOURCES.txt
 inventario_basilos.egg-info/dependency_links.txt
 inventario_basilos.egg-info/entry_points.txt
 inventario_basilos.egg-info/not-zip-safe
+inventario_basilos.egg-info/requires.txt
 inventario_basilos.egg-info/top_level.txt
-view/conciliacion_diaria.xml
-view/inventario_linea.xml
+view/proveedores.xml

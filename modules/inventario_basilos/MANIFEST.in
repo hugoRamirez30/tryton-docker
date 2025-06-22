@@ -1,0 +1,3 @@
+include tryton.cfg
+include ir.model.access.csv
+recursive-include view *.xml

@@ -3,5 +3,7 @@ Name: inventario_basilos
 Version: 1.0.0
 Summary: Gestión de inventario y mermas
 Author: Hugo-Ramirez
+Requires-Dist: trytond<7.7,>=7.6
 Dynamic: author
+Dynamic: requires-dist
 Dynamic: summary

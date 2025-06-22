@@ -1,4 +1,4 @@
-# modules/basilios_proveedores/model/proveedores.py
+# modules/basilios_proveedores/proveedores.py
 
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import PoolMeta
