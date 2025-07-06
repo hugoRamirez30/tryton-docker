@@ -1,25 +1,56 @@
-# tryton-docker
+# ERP Basilios - Tryton
 
-Este repositorio contiene el entorno de desarrollo para Tryton 7.0 utilizando Docker, PostgreSQL y módulos personalizados.
+## Descripción
+Este proyecto contiene la configuración y base de datos para el sistema ERP Tryton de la empresa simulada Basilios. Incluye:
 
-## 📦 Contenido
-
-- `docker-compose.yml`: configuración base para levantar los contenedores.
-- `trytond.conf`: archivo de configuración del servidor Tryton.
-- `modules/`: carpeta que contiene los módulos personalizados.
-- `files/`: archivos varios necesarios para la configuración.
-- `tryton-client-web/`: cliente web de Tryton.
-- `README.md`: este archivo.
-
-## tryton
-
-actualmente usando modulos del propio tryton y trabajando bien
-
-## 📄 Contacto
-
-Este entorno fue preparado por [Hugo Ramírez](https://github.com/hugoRamirez30) como parte de pruebas y personalización para Apimes.
+- Contenedores Docker para Tryton y PostgreSQL
+- Archivo `basilios.sql` con la base de datos completa
+- Configuración para facturación, inventarios, contabilidad y ventas
+- Archivos `docker-compose.yml` y `trytond.conf` para levantar el sistema
 
 ---
 
+## Requisitos
 
+- Tener instalado Docker y Docker Compose
+- Clonar este repositorio
 
+---
+
+## Levantar el sistema
+
+Desde la carpeta raíz del proyecto (`tryton-docker`), ejecutar:
+
+```bash
+docker-compose up -d
+
+Restaurar la base de datos
+Para cargar la base de datos basilios.sql en el contenedor PostgreSQL:
+
+Copiar el archivo al contenedor:
+
+```bash
+docker cp basilios.sql tryton-postgres:/basilios.sql
+
+Entrar al contenedor PostgreSQL:
+
+```bash
+docker exec -it tryton-postgres bash
+
+Restaurar la base:
+
+```bash
+psql -U postgres -d tryton < /basilios.sql
+
+Salir del contenedor:
+
+Acceder a Tryton
+Después de levantar el sistema, Tryton estará disponible en:
+
+http://localhost:8000
+
+Exportar base de datos
+Para hacer una copia de seguridad de la base de datos desde el contenedor PostgreSQL:
+
+```bash
+docker exec -t tryton-postgres pg_dump -U postgres -d tryton > basilios.sql

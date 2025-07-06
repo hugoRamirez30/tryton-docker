@@ -1,1 +1,0 @@
-FROM tryton/tryton:office
