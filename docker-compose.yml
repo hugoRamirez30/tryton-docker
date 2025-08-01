@@ -9,6 +9,8 @@ services:
       - pgdata:/var/lib/postgresql/data
     networks:
       - tryton-net
+    ports:
+      - "5432:5432"   # <- ESTA es la línea que añadimos, en el lugar correcto
 
   tryton:
     image: tryton/tryton:latest
